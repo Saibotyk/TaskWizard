@@ -8,18 +8,13 @@
 </head>
 <body>
    <?php
-   try {
-    $dbCo = new PDO('mysql:host=localhost;dbname=taskwizard;charset=utf8',
-    'root');
-    $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,
-    PDO::FETCH_ASSOC);
-   }
+require 'includes/_database.php';
 
-   catch (Exception $e) {
-    die('Unable to connect to the database.
-    '.$e->getMessage());
-    }
-    
+    $query = $dbCo->prepare('SELECT * FROM task');
+    $query->execute();
+    $tasks = $query->fetchAll();
+
+    var_dump($tasks)
    ?> 
     <script src="js/script.js"></script>
 </body>
