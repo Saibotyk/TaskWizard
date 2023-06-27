@@ -1,0 +1,26 @@
+:root{
+    --primary-color:#0367A6;
+
+}
+
+
+body {
+    background-color: #373491;
+}
+
+.container{
+    background-color: var(--primary-color);
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+}
+
+.container__title{
+    font-style: Arial;
+    background-color: #2D8A75;
+}
+
+.container__list{}
+
+.container__item{
+    background-color: #2D8A75;
+}

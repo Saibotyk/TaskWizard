@@ -18,6 +18,14 @@
         $tasks = $query->fetchAll();
         echo getList($tasks);
         ?>
+        <section>
+          <article class="container">
+            <h2 class="container__title">To do</h2>
+            <ul class="container__list">
+                <li class="container-list-itm"></li>
+            </ul>
+          </article>  
+        </section>
     </main>
     <script src="js/script.js"></script>
 </body>
