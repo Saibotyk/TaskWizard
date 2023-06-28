@@ -1,7 +1,7 @@
 <?php
 try {
     $dbCo = new PDO('mysql:host=localhost;dbname=taskwizard;charset=utf8',
-    'root');
+    'michel', '123456');
     $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,
     PDO::FETCH_ASSOC);
    }
