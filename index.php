@@ -1,7 +1,7 @@
 <?php require 'includes/_head.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
-$query = $dbCo->prepare('SELECT * FROM task');
+$query = $dbCo->prepare('SELECT title, description, date_creation, is_completed, ranking FROM task WHERE is_completed = 0 ORDER BY date_creation');
 $query->execute();
 $tasks = $query->fetchAll();
 ?>
