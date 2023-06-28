@@ -13,6 +13,16 @@
     list-style: none;
 }
 
+a:link{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:visited{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
 body {
     background-color: var(--secondary-color);
     font-family: Inter, sans-serif;
@@ -58,5 +68,6 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
+    height: 3rem;
     
 }
