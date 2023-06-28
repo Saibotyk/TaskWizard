@@ -18,7 +18,7 @@ function getList(array $array) :string  {
                         }
                         else{$img= 'img/checkbox_completed.png" alt="checkbox completed"';}
                         $html .= '<li class="list-item"><img src="'.$img.'">';
-                        $html .= $task['description']."</li>";
+                        $html .= $task['title']."</li>";
                     }
                     $html .= '</ul>';
                     return $html;
