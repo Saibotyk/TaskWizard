@@ -16,9 +16,11 @@ $tasks = $query->fetchAll();
             <article class="container">
                 <h3 class="container-subtitle">Aujourd'hui</h3>
                 <?=getList($tasks)?>
-                <!-- <ul> -->
-                <!-- <li class="list-item"><img src="img/checkbox.png" alt="checkbox">This is a task</li> -->
-                <!-- </ul> -->
+            </article>
+        </section>
+        <section>
+            <article class="container">
+                <h3 class="container-subtitle">Terminées</h3>
             </article>
         </section>
     </main>
