@@ -15,4 +15,13 @@ function getList(array $array) :string  {
                 }
 
 
+function getPopupText(array $array) : string {
+    foreach($array as $msg => $text) {
+        if ( array_key_exists('msg', $_GET) && $_GET['msg'] == $msg) {
+            return $text;
+        } else if (array_key_exists('msg', $_GET) && $_GET['msg'] == $msg) {
+            return $text;
+        }  else {break;}
+    }
+    }
 
