@@ -10,10 +10,11 @@ $tasks = $query->fetchAll();
     <header class="header">
         <h2>Mes tâches</h2>
         <?= createTask($tasks) ?>
-        <article class="article">
+        <article class="article task-js _display-none">
             <form action="includes/_add.php" method="get" class="article__form">
                 <input class="article__input" type="text" name="task" id="add_task" placeholder="Tâche">
                 <textarea class="article__textarea" type="text" name="description" id="add_description" rows="3" cols="20" placeholder="Décrivez votre tâche"></textarea>
+                <button class="btn">enregistrer</button>
             </form>
         </article>
         <main>
