@@ -23,3 +23,9 @@ function getList(array $array) :string  {
                     $html .= '</ul>';
                     return $html;
                 }
+
+function createTask(array $array) {
+    $html = '<img src="img/plus-violet.png" class="add-js" alt="plus dans une case violette">';
+    $html .= '</header>';
+    return $html;
+}
