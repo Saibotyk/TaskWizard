@@ -7,7 +7,7 @@ function getList(array $array) :string  {
                             $img = 'img/checkbox.png" alt="checkbox"';
                         }
                         else{$img= 'img/checkbox_completed.png"';}
-                        $html .= '<li><a href="update.php?is_completed='.$task['is_completed'].'&id='.$task['id_task'].'" class="list-item"><img src="'.$img.'" id="checkboxChecked">';
+                        $html .= '<li><a href="updatestatus.php?is_completed='.$task['is_completed'].'&id='.$task['id_task'].'" class="list-item"><img src="'.$img.'" id="checkboxChecked">';
                         $html .= $task['title']."</a></li>";
                     }
                     $html .= '</ul>';
