@@ -1,7 +1,7 @@
 <?php require 'includes/_head.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
-$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking FROM task WHERE is_completed = 0 ORDER BY date_creation');
+$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking FROM task WHERE is_completed = 0 ORDER BY date_creation DESC');
 $query->execute();
 $tasks = $query->fetchAll();
 ?>
@@ -15,6 +15,14 @@ $tasks = $query->fetchAll();
         <form action="add.php" method="post" class="article-form">
             <input class="article-input" type="text" name="task" id="add_task" placeholder="Tâche" required>
             <textarea class="article-textarea" type="text" name="description" id="add_description" rows="3" cols="20" placeholder="Décrivez votre tâche" required></textarea>
+            <button class="btn">Ajouter</button>
+        </form>
+    </article>
+    <article class="article modify-js _display-none">
+        <form action="modify.php" method="post" class="article-form">
+            <input class="article-input" type="text" name="task" id="modify_task" placeholder="Tâche" required>
+            <textarea class="article-textarea" type="text" name="description" id="modify_description" rows="3" cols="20" placeholder="Décrivez votre tâche" required></textarea>
+            <input type="text" name="id" class="input-js" data-id="">
             <button class="btn">Enregistrer</button>
         </form>
     </article>
@@ -23,7 +31,7 @@ $tasks = $query->fetchAll();
         'ok' => '<article class="popup"><p class="popup-text">Vôtre tâche a bien été ajoutée !</p></article>',
         'ko' => '<article class="popup"><p class="popup-text">Vôtre tâche a échouée !</p></article>'
     ];
-    // echo getPopupText($popupMsg);
+    echo getPopupText($popupMsg);
     ?>
     <main>
         <section>
