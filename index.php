@@ -1,7 +1,7 @@
 <?php require 'includes/_head.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
-$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking FROM task WHERE is_completed = 0 ORDER BY date_creation');
+$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking FROM task WHERE is_completed = 0 ORDER BY date_creation DESC');
 $query->execute();
 $tasks = $query->fetchAll();
 ?>
@@ -23,7 +23,7 @@ $tasks = $query->fetchAll();
         'ok' => '<article class="popup"><p class="popup-text">Vôtre tâche a bien été ajoutée !</p></article>',
         'ko' => '<article class="popup"><p class="popup-text">Vôtre tâche a échouée !</p></article>'
     ];
-    // echo getPopupText($popupMsg);
+    echo getPopupText($popupMsg);
     ?>
     <main>
         <section>
