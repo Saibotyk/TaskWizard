@@ -33,8 +33,4 @@ function getPopupText(array $array): string
     }
     return '';
 }
-
-function restoreRanking($array) {
-    $html = '<a href="">';
-}
 ?>

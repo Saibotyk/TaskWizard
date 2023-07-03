@@ -5,9 +5,13 @@ require 'includes/_functions.php';
 
 
 
-$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking ,MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
+$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
 $query->execute();
 $tasks = $query->fetchAll();
+
+$query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
+$query2->execute();
+$ranking = $query->fetchAll();
 ?>
 
 <body>
@@ -30,21 +34,20 @@ $tasks = $query->fetchAll();
             <article class="container">
                 <h3 class="container-subtitle">Aujourd'hui</h3>
                 <?= getList($tasks) ?>
-                
             </article>
         </section>
         <section>
             <article class="container">
                 <h3 class="container-subtitle">Terminées</h3>
                 <?php
-                $query = $dbCo->prepare('SELECT id_task, title, description, is_completed FROM task WHERE is_completed = 1;');
+                $query = $dbCo->prepare('SELECT id_task, title, is_completed FROM task WHERE is_completed = 1;');
                 $query->execute();
                 $tasks = $query->fetchAll();
-                echo getList($tasks)
-                
+                echo getList($tasks);
                 ?>
             </article>
         </section>
+        <a href="tempupdatedbrank.php?" class="btn">Restore</a>
     </main>
     <script src="js/script.js"></script>
 </body>
