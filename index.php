@@ -1,7 +1,11 @@
 <?php require 'includes/_head.php';
+require 'vendor/autoload.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
-$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking FROM task WHERE is_completed = 0 ORDER BY date_creation DESC');
+
+
+
+$query = $dbCo->prepare('SELECT id_task, title, description, date_creation, is_completed, ranking ,MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
 $query->execute();
 $tasks = $query->fetchAll();
 ?>
@@ -19,10 +23,6 @@ $tasks = $query->fetchAll();
         </form>
     </article>
     <?php
-    $popupMsg = [
-        'ok' => '<article class="popup"><p class="popup-text">Vôtre tâche a bien été ajoutée !</p></article>',
-        'ko' => '<article class="popup"><p class="popup-text">Vôtre tâche a échouée !</p></article>'
-    ];
     echo getPopupText($popupMsg);
     ?>
     <main>
@@ -30,6 +30,7 @@ $tasks = $query->fetchAll();
             <article class="container">
                 <h3 class="container-subtitle">Aujourd'hui</h3>
                 <?= getList($tasks) ?>
+                
             </article>
         </section>
         <section>
@@ -40,6 +41,7 @@ $tasks = $query->fetchAll();
                 $query->execute();
                 $tasks = $query->fetchAll();
                 echo getList($tasks)
+                
                 ?>
             </article>
         </section>

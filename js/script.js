@@ -5,3 +5,13 @@ button.addEventListener('click', function() {
     newTask.classList.toggle('_display-none');
 })
 
+// Closed popup
+let popup = document.querySelector('.popup-js');
+let documentBody = document.querySelector('body');
+
+documentBody.addEventListener('click', function(event) {
+    if (event.target.classList.contains('popup-js')) {
+        popup.classList.add('_display-none');
+    }
+})
+
