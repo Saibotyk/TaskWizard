@@ -28,8 +28,8 @@ const inputTtl = document.querySelector('.input-ttl-js');
 modifiers.forEach((modifier) => {
     modifier.addEventListener('click', function () {
         form.classList.toggle('_display-none');
-        inputId.setAttribute('value', this.parentElement.dataset.id);
-        inputTtl.setAttribute('value', this.parentElement.querySelector('.text-task-js').innerHTML);  
+        inputId.setAttribute('value', this.parentElement.parentElement.dataset.id);
+        inputTtl.setAttribute('value', this.parentElement.parentElement.querySelector('.text-task-js').innerHTML);  
         console.log(inputTtl) 
     });
 });
