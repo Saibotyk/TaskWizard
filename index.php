@@ -44,7 +44,7 @@ $ranking = $query->fetchAll();
             <article class="container">
                 <h3 class="container-subtitle">Terminées</h3>
                 <?php
-                $query = $dbCo->prepare('SELECT id_task, title, is_completed FROM task WHERE is_completed = 1;');
+                $query = $dbCo->prepare('SELECT id_task, title, is_completed, ranking FROM task WHERE is_completed = 1;');
                 $query->execute();
                 $tasks = $query->fetchAll();
                 echo getList($tasks);
