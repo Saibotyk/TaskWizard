@@ -1,12 +1,12 @@
 <?php
 require "includes/_database.php";
 
-
-$query = $dbCo->prepare("UPDATE task SET title = :title, description = :description WHERE id_task = :id");
+// var_dump($_REQUEST);
+// exit;
+$query = $dbCo->prepare("UPDATE task SET title = :title WHERE id_task = :id");
 $isOK = $query->execute([
-    'title' => strip_tags($_POST['task']),
-    'description' => strip_tags($_POST['description']),
-    'id' => strip_tags($_POST['id'])
+    'title' => strip_tags($_REQUEST['title']),
+    'id' => strip_tags($_REQUEST['id'])
 ]);
 
 header('location: index.php');

@@ -11,6 +11,7 @@ $tasks = $query->fetchAll();
         <h2>Mes tâches</h2>
         <img src="img/plus-violet.png" class="add-js" alt="plus dans une case violette">
     </header>
+       
     <article class="article task-js _display-none">
         <form action="add.php" method="post" class="article-form">
             <input class="article-input" type="text" name="task" id="add_task" placeholder="Tâche" required>
@@ -19,12 +20,7 @@ $tasks = $query->fetchAll();
         </form>
     </article>
     <article class="article modify-js _display-none">
-        <form action="modify.php" method="post" class="article-form">
-            <input class="article-input" type="text" name="task" id="modify_task" placeholder="Tâche" required>
-            <textarea class="article-textarea" type="text" name="description" id="modify_description" rows="3" cols="20" placeholder="Décrivez votre tâche" required></textarea>
-            <input type="text" name="id" class="input-js" data-id="">
-            <button class="btn">Enregistrer</button>
-        </form>
+        <?=getForm($tasks)?>
     </article>
     <?php
     $popupMsg = [

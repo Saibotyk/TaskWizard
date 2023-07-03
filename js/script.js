@@ -10,25 +10,19 @@ button.addEventListener('click', function () {
 const form = document.querySelector('.modify-js');
 const modifiers = document.querySelectorAll('.modifier-js');
 const listItems = document.querySelectorAll('.list-js');
-const inputId = document.querySelector('.input-js')
-
-listItems.forEach((li) => {
-    let id = li.dataset.id;
-    inputId.setAttribute('data-id', id)
-    console.log(inputId);
-})
+const inputId = document.querySelector('.input-js');
+const ttlsTask = document.querySelectorAll('.text-task-js');
+const inputTtl = document.querySelector('.input-ttl-js');
 
 
 modifiers.forEach((modifier) => {
     modifier.addEventListener('click', function () {
-        form.classList.toggle('_display-none')
+        form.classList.toggle('_display-none');
+        inputId.setAttribute('value', this.parentElement.dataset.id);
+        inputTtl.setAttribute('value', this.parentElement.querySelector('.text-task-js').innerHTML);  
+        console.log(inputTtl) 
     });
-
 });
-
-setAttribute 
-
-// l'id de l'input doit être relié à celui de la task
 
 
 
