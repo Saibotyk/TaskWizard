@@ -6,6 +6,16 @@ button.addEventListener('click', function () {
 })
 
 
+// Closed popup
+let popup = document.querySelector('.popup-js');
+let documentBody = document.querySelector('body');
+
+documentBody.addEventListener('click', function(event) {
+    if (event.target.classList.contains('popup-js')) {
+        popup.classList.add('_display-none');
+    }
+})
+
 // Modifying button displays form 
 const form = document.querySelector('.modify-js');
 const modifiers = document.querySelectorAll('.modifier-js');
@@ -23,6 +33,5 @@ modifiers.forEach((modifier) => {
         console.log(inputTtl) 
     });
 });
-
 
 
