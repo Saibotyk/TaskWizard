@@ -168,3 +168,8 @@ body {
     height: 100vh;   
     z-index: 999;
 }
+
+.btn-invisible{
+    border: none;
+}
+

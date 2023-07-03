@@ -9,6 +9,9 @@ $user = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASSWORD'];
 try {
     $dbCo = new PDO($host, $user, $password);
+
+require 'vendor/autoload.php';
+
     $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,
     PDO::FETCH_ASSOC);
    }
