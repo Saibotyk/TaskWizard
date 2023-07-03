@@ -12,8 +12,8 @@ function getList(array $array) :string  {
 
                         $dataset = ' data-id="' . $task['id_task'] . '"';
                         $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] . '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
-                        $html .= '<p class="text-task-js">'.$task['title'].'</p></a><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
-                        $html .= '<div><a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=down"><img src="img/down.svg" alt="down"></a>';
+                        $html .= '<p class="text-task-js">'.$task['title'].'</p><div class="btn-container"></a><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
+                        $html .= '<a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=down"><img src="img/down.svg" alt="down"></a>';
                         $html .='<a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=up"><img src="img/up.svg" alt="up"></a></div></li>'; 
                         $html .= "</li>";
                     }
