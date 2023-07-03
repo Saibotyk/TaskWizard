@@ -8,9 +8,9 @@ button.addEventListener('click', function () {
 
 // Closed popup
 let popup = document.querySelector('.popup-js');
-let documentBody = document.querySelector('body');
+let documentHtml = document.querySelector('html');
 
-documentBody.addEventListener('click', function(event) {
+documentHtml.addEventListener('click', function(event) {
     if (event.target.classList.contains('popup-js')) {
         popup.classList.add('_display-none');
     }
