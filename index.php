@@ -5,13 +5,11 @@ require 'includes/_functions.php';
 
 
 
-$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
+$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking');
 $query->execute();
 $tasks = $query->fetchAll();
 
-$query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
-$query2->execute();
-$ranking = $query->fetchAll();
+
 ?>
 
 <body>
@@ -23,7 +21,6 @@ $ranking = $query->fetchAll();
     <article class="article task-js _display-none">
         <form action="add.php" method="post" class="article-form">
             <input class="article-input" type="text" name="task" id="add_task" placeholder="Tâche" required>
-            <textarea class="article-textarea" type="text" name="description" id="add_description" rows="3" cols="20" placeholder="Décrivez votre tâche" required></textarea>
             <button class="btn">Ajouter</button>
         </form>
     </article>
