@@ -5,19 +5,20 @@ require '_database.php';
 function getList(array $array) :string  {
                     $html = '<ul class="list">';
                     foreach ($array as $task) {
+                        $dataset = ' data-id="' . $task['id_task'] . '"';
                         if ($task['is_completed'] == 0){
                             $img = 'img/checkbox.png" alt="checkbox"';
+                            $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
+                            $html .= '<p class="text-task-js">'.$task['title'].'</p></a><div class="btn-container"><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
+                            $html .= '<a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=down"><img src="img/down.svg" alt="down"></a>';
+                            $html .='<a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=up"><img src="img/up.svg" alt="up"></a></div></li>'; 
+                            $html .= "</li>";
+                        } else {
+                            $img = 'img/checkbox_completed.png"';
+                            $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
+                            $html .= '<p class="text-task-js">'.$task['title'].'</p></a>';
                         }
-                        else{$img= 'img/checkbox_completed.png"';}
-
-                        $dataset = ' data-id="' . $task['id_task'] . '"';
-                        $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] . '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
-                        $html .= '<p class="text-task-js">'.$task['title'].'</p></a><div class="btn-container"><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
-                        $html .= '<a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=down"><img src="img/down.svg" alt="down"></a>';
-                        $html .='<a href="updateranking.php?id=' . $task['id_task'] . '&rank='.$task['ranking'].'&prior=up"><img src="img/up.svg" alt="up"></a></div></li>'; 
-                        $html .= "</li>";
                     }
-                    
                     $html .= '</ul>';
                     return $html;
                 }
