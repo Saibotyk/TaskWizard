@@ -3,12 +3,16 @@ require 'vendor/autoload.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
 
-
-
-$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking');
+$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
 $query->execute();
 $tasks = $query->fetchAll();
 
+$query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
+$query2->execute();
+$ranking = $query->fetchAll();
+
+// session_start();
+$_SESSION['myToken'] = md5(uniqid(mt_rand(), true));
 
 ?>
 
@@ -17,15 +21,21 @@ $tasks = $query->fetchAll();
         <h2>Mes tâches</h2>
         <img src="img/plus-violet.png" class="add-js" alt="plus dans une case violette">
     </header>
-       
+
     <article class="article task-js _display-none">
         <form action="add.php" method="post" class="article-form">
             <input class="article-input" type="text" name="task" id="add_task" placeholder="Tâche" required>
+            <input type="hidden" name="token" value="<?= $_SESSION['myToken'] ?>">
             <button class="btn">Ajouter</button>
         </form>
     </article>
     <article class="article modify-js _display-none">
-        <?=getForm($tasks)?>
+        <form action="modify.php" method="post" class="article-form">
+            <input class="article-input input-ttl-js" type="text" name="title" id="modify_task" placeholder="Tâche" required value="">'
+            <input type="hidden" name="id" class="input-js" value="">
+            <input type="hidden" name="token" value="<?= $_SESSION['myToken'] ?>">
+            <button class="btn">Enregistrer</button>
+        </form>
     </article>
     <?php
     echo getPopupText($popupMsg);

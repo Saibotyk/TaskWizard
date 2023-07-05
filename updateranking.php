@@ -1,8 +1,16 @@
 <?php
 require 'includes/_database.php';
+require 'includes/_functions.php';
+
+// session_start();
+// verifyToken();
+// verifyOrigin();
+
 $query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task ORDER BY ranking');
 $query2->execute();
 $ranking = $query2->fetchAll();
+
+
 
 $maxRank = $ranking[0]['maxrank'];
 $minRank = $ranking[0]['minrank'];

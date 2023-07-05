@@ -32,6 +32,6 @@ modifiers.forEach((modifier) => {
         inputTtl.setAttribute('value', this.parentElement.parentElement.querySelector('.text-task-js').innerHTML);  
         console.log(inputTtl) 
     });
-});
+}); 
 
 
