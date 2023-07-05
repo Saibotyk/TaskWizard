@@ -7,7 +7,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task ORDER BY ranking');
 $query2->execute();
 $ranking = $query2->fetchAll();
-
+ //ca me brise les noisettes !
 
 $maxRank = $ranking[0]['maxrank'];
 $minRank = $ranking[0]['minrank'];
