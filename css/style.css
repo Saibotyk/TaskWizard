@@ -75,7 +75,7 @@ body {
     align-items: center;
     justify-content: space-between;
     position: calc(100% - 2rem);
-    gap: 1rem;
+    gap: 2rem;
     height: 3rem;
     width: calc(100% - 2rem);
 }

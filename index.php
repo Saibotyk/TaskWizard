@@ -1,13 +1,14 @@
-<?php require 'includes/_head.php';
+<?php 
+require 'includes/_head.php';
 require 'vendor/autoload.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
 
-$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
+$query = $dbCo->prepare('SELECT id_task, title, date_creation, is_completed, ranking  FROM task WHERE is_completed = 0 ORDER BY ranking ');
 $query->execute();
 $tasks = $query->fetchAll();
 
-$query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking DESC');
+$query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking ');
 $query2->execute();
 $ranking = $query->fetchAll();
 

@@ -20,9 +20,10 @@ function getList(array $array) :string  {
                             $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
                             $html .= '<p class="text-task-js">'.$task['title'].'</p></a>';
                         };
+                    }
                     $html .= '</ul>';
-                    return $html;
-}};
+                return $html; 
+                };
             
             
 
