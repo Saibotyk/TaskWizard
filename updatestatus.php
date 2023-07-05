@@ -1,5 +1,11 @@
 <?php
 require 'includes/_database.php';
+require 'includes/_functions.php';
+
+session_start();
+// verifyToken();
+// verifyOrigin();
+
 
 $query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank FROM task');
 $query2->execute();
