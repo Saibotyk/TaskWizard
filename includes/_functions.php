@@ -5,7 +5,7 @@ require '_database.php';
 session_start();
 
 function getList(array $array) :string  {
-                    $html = '<ul class="list">';
+                    $html = '<ul class="list js-ul">';
                     foreach ($array as $task) {
                         $dataset = ' data-id="' . $task['id_task'] . '"';
                         if ($task['is_completed'] == 0){
