@@ -4,18 +4,28 @@ require '_database.php';
 
 session_start();
 
-function getList(array $array) :string  {
+function getList(array $array, int $maxRank) :string {
                     $html = '<ul class="list js-ul">';
                     foreach ($array as $task) {
                         $dataset = ' data-id="' . $task['id_task'] . '"';
-                        if ($task['is_completed'] == 0){
+                        if ($task['is_completed'] == 0 && $task['ranking'] > 1 && $task['ranking'] < $maxRank){
                             $img = 'img/checkbox.png" alt="checkbox"';
                             $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
                             $html .= '<p class="text-task-js">'.$task['title'].'</p></a><div class="btn-container"><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
                             $html .= '<button class="js-btn" data-id='.$task['id_task'].' data-ranking='.$task['ranking'].' data-prior="down"><img src="img/down.svg" alt="down"></a>';
-                            $html .= '<button class="js-btn" data-id='.$task['id_task'].' data-ranking='.$task['ranking'].' data-prior="up"><img src="img/up.svg" alt="up"></a></div></li>'; 
-                            $html .= "</li>";
-                        } else {
+                            $html .= '<button class="js-btn" data-id='.$task['id_task'].' data-ranking='.$task['ranking'].' data-prior="up"><img src="img/up.svg" alt="up"></a></div></li>';
+                        } else if ($task['is_completed'] == 0 && $task['ranking'] == 1) {
+                            $img = 'img/checkbox.png" alt="checkbox"';
+                            $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
+                            $html .= '<p class="text-task-js">'.$task['title'].'</p></a><div class="btn-container"><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
+                            $html .= '<button class="js-btn" data-id='.$task['id_task'].' data-ranking='.$task['ranking'].' data-prior="down"><img src="img/down.svg" alt="down"></button>';
+                            $html .= '</div></li>'; 
+                        } else if ($task['is_completed'] == 0 && $task['ranking'] == $maxRank) {
+                            $img = 'img/checkbox.png" alt="checkbox"';
+                            $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
+                            $html .= '<p class="text-task-js">'.$task['title'].'</p></a><div class="btn-container"><button class="modifier-js btn-invisible"><img src="img/modify-icn.png"></button>';
+                            $html .= '<button class="js-btn" data-id='.$task['id_task'].' data-ranking='.$task['ranking'].' data-prior="up"><img src="img/up.svg" alt="up"></a></div></li>';
+                        }  else {
                             $img = 'img/checkbox_completed.png"';
                             $html .= '<li '.$dataset.'class="task list-js"><a href="updatestatus.php?is_completed=' . $task['is_completed'] . '&id=' . $task['id_task'] .'&ranking=' .$task['ranking']. '" class="list-item"><img src="' . $img . '" id="checkboxChecked">';
                             $html .= '<p class="text-task-js">'.$task['title'].'</p></a>';

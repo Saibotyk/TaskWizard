@@ -52,11 +52,9 @@ buttons.forEach((button) => {
                 let liChild = document.querySelector(`[data-id="${apiResponse.id}"]`)
                 if (apiResponse.prior === "up") {
                     ulParent.insertBefore(liChild, liChild.previousElementSibling);
-                    // console.log(liChild, liChild.previousElementSibling);
                 }
                 else {
                     ulParent.insertBefore(liChild.nextElementSibling, liChild);
-                    // console.log(liChild.nextElementSibling, liChild);
                 }
 
             });

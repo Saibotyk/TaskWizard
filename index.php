@@ -10,7 +10,9 @@ $tasks = $query->fetchAll();
 
 $query2 = $dbCo->prepare('SELECT id_task, ranking, MAX(ranking) AS maxrank, MIN(ranking) AS minrank FROM task WHERE is_completed = 0 ORDER BY ranking');
 $query2->execute();
-$ranking = $query->fetchAll();
+$ranking = $query2->fetchAll();
+
+$maxRank = $ranking[0]['maxrank'];
 
 // session_start();git 
 $_SESSION['myToken'] = md5(uniqid(mt_rand(), true));
@@ -45,7 +47,7 @@ $_SESSION['myToken'] = md5(uniqid(mt_rand(), true));
         <section>
             <article class="container">
                 <h3 class="container-subtitle">Aujourd'hui</h3>
-                <?= getList($tasks) ?>
+                <?= getList($tasks, $maxRank) ?>
             </article>
         </section>
         <section>
@@ -55,7 +57,7 @@ $_SESSION['myToken'] = md5(uniqid(mt_rand(), true));
                 $query = $dbCo->prepare('SELECT id_task, title, is_completed, ranking FROM task WHERE is_completed = 1;');
                 $query->execute();
                 $tasks = $query->fetchAll();
-                echo getList($tasks);
+                echo getList($tasks, $maxRank);
                 ?>
             </article>
         </section>
