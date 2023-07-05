@@ -33,7 +33,7 @@ $_SESSION['myToken'] = md5(uniqid(mt_rand(), true));
         </form>
     </article>
     <article class="article modify-js _display-none">
-        <form action="modify.php" method="post" class="article-form">
+        <form action="" method="" class="article-form js-form">
             <input class="article-input input-ttl-js" type="text" name="title" id="modify_task" placeholder="Tâche" required value="">'
             <input type="hidden" name="id" class="input-js" value="">
             <input type="hidden" name="token" value="<?= $_SESSION['myToken'] ?>">
