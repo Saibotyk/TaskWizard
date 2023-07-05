@@ -1,3 +1,8 @@
+// API Call
+
+
+
+
 // Add Button to create new task
 let button = document.querySelector('.add-js');
 let newTask = document.querySelector('.task-js');
@@ -34,4 +39,36 @@ modifiers.forEach((modifier) => {
     });
 }); 
 
+// ranking tasks
+
+const buttons = document.querySelectorAll('.js-btn');
+
+
+buttons.forEach((button) => {
+    button.addEventListener('click', e => {
+        let object = {
+            id : button.dataset.id,
+            ranking : button.dataset.ranking,
+            prior : button.dataset.prior
+        }
+        moveTask(object)
+        .then(apiResponse => console.table(apiResponse));
+    });
+});
+
+async function moveTask(data) {
+    try {
+        const response = await fetch("api.php", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    }
+    catch (error) {
+        console.error("Unable to load datas from the server : " + error);
+    }
+}
 
