@@ -6,7 +6,7 @@ session_start();
 
 
 // verifyToken();
-verifyOrigin();
+// verifyOrigin();
 
 $query = $dbCo->prepare("UPDATE task SET ranking = id_task");
 $isOk = $query->execute();
